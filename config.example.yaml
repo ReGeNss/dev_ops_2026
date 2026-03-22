@@ -1,0 +1,9 @@
+# Copy to config.dev.yaml for local development or place at /etc/mywebapp/config.yaml on the server.
+host: "127.0.0.1"
+port: 8000
+database:
+  host: "127.0.0.1"
+  port: 5432
+  user: "mywebapp"
+  password: "changeme"
+  database: "mywebapp"
