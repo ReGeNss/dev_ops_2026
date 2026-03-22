@@ -7,7 +7,7 @@ async function main(): Promise<void> {
   const config = loadConfig();
   const pool = createPool(config.database);
   const taskRepository = new PostgresTaskRepository(pool);
-  const app = await buildServer(taskRepository);
+  const app = await buildServer({ taskRepository, pool });
   await app.listen({ host: config.host, port: config.port });
 }
 
