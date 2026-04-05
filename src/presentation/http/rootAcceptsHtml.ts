@@ -1,6 +1,3 @@
-/**
- * Root endpoint serves HTML only. Returns true if the Accept header allows text/html or a wildcard media range.
- */
 export function rootAcceptsHtml(accept: string | undefined): boolean {
   if (!accept || accept.trim() === "") {
     return true;

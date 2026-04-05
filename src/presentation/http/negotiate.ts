@@ -1,8 +1,5 @@
 export type ContentMode = "json" | "html";
 
-/**
- * Chooses JSON vs HTML using Accept quality values. The wildcard media range counts toward both; ties favor JSON.
- */
 export function negotiateJsonOrHtml(accept: string | undefined): ContentMode {
   if (!accept || accept.trim() === "") {
     return "json";
