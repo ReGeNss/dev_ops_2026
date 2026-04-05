@@ -75,9 +75,6 @@ function validateConfig(data: unknown, source: string): AppConfig {
   };
 }
 
-/**
- * Resolves config path: MYWEBAPP_CONFIG_PATH, then ./config.dev.yaml if it exists, else /etc/mywebapp/config.yaml
- */
 export function resolveConfigPath(): string {
   const fromEnv = process.env.MYWEBAPP_CONFIG_PATH;
   if (fromEnv && fromEnv.length > 0) {
