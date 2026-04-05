@@ -14,10 +14,10 @@ sudo chage -d 0 operator
 sudo usermod -aG sudo student
 sudo usermod -aG sudo teacher
 
-sudo usermod -s /usr/sbin/nologin "$(whoami)"
-
-sudo usermod -L "$(whoami)"
-echo "DenyUsers $(whoami)" | sudo tee -a /etc/ssh/sshd_config
+sudo usermod -s /usr/sbin/nologin vagrant
+sudo usermod -L vagrant
+sudo passwd -l vagrant
+echo "DenyUsers vagrant" | sudo tee -a /etc/ssh/sshd_config
 sudo systemctl restart ssh
 
 cat <<'EOF' | sudo tee /etc/sudoers.d/operator
