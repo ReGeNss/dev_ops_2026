@@ -18,8 +18,8 @@ Vagrant.configure("2") do |config|
 
   config.vm.provision "shell", name: "install-dependencies", path: "vm_scripts/1_install_dependencies.sh"
   config.vm.provision "shell", name: "setup-users", path: "vm_scripts/2_setup_users.sh"
-  config.vm.provision "shell", name: "create-db", path: "vm_scripts/3_create_db.sh"
-  config.vm.provision "shell", name: "copy-config", path: "vm_scripts/4_copy_config.sh"
+  config.vm.provision "shell", name: "copy-config", path: "vm_scripts/3_copy_config.sh"
+  config.vm.provision "shell", name: "create-db", path: "vm_scripts/4_create_db.sh"
   config.vm.provision "shell", name: "start-service", path: "vm_scripts/5_systemmd_setup.sh"
   config.vm.provision "shell", name: "setup-nginx", path: "vm_scripts/6_setup_nginx.sh"
   config.vm.provision "shell", name: "create-gradebook", path: "vm_scripts/7_create_gradebook.sh"
