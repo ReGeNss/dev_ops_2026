@@ -17,3 +17,15 @@ sudo usermod -aG sudo teacher
 sudo usermod -s /usr/sbin/nologin "$(whoami)"
 
 sudo usermod -L "$(whoami)"
+echo "DenyUsers $(whoami)" | sudo tee -a /etc/ssh/sshd_config
+sudo systemctl restart ssh
+
+cat <<'EOF' | sudo tee /etc/sudoers.d/operator
+operator ALL=(ALL) NOPASSWD: /usr/bin/systemctl start task_tracker.service
+operator ALL=(ALL) NOPASSWD: /usr/bin/systemctl stop task_tracker.service
+operator ALL=(ALL) NOPASSWD: /usr/bin/systemctl restart task_tracker.service
+operator ALL=(ALL) NOPASSWD: /usr/bin/systemctl status task_tracker.service
+operator ALL=(ALL) NOPASSWD: /usr/bin/systemctl reload nginx.service
+EOF
+
+sudo chmod 440 /etc/sudoers.d/operator
