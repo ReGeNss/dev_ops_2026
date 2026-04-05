@@ -3,3 +3,5 @@ dist/
 *.log
 .env
 config.dev.yaml
+config.yaml
+.vagrant/
