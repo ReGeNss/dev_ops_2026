@@ -8,7 +8,13 @@ async function main(): Promise<void> {
   const pool = createPool(config.database);
   const taskRepository = new PostgresTaskRepository(pool);
   const app = await buildServer({ taskRepository, pool });
-  await app.listen({ host: config.host, port: config.port });
+
+  if (process.env.LISTEN_FDS) {
+    await app.ready();
+    app.server.listen({ fd: 3 });
+  } else {
+    await app.listen({ host: config.host, port: config.port });
+  }
 }
 
 main().catch((err) => {

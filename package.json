@@ -10,7 +10,8 @@
     "build": "tsc",
     "start": "node dist/src/main.js",
     "dev": "tsx watch src/main.ts",
-    "migrate": "tsx scripts/migrate.ts"
+    "migrate": "tsx scripts/migrate.ts",
+    "setup": "npm install && npm run build && npm run migrate"
   },
   "dependencies": {
     "fastify": "^5.2.1",

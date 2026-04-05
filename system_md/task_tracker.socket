@@ -1,0 +1,11 @@
+[Unit]
+Description=Socket for task tracker service activation
+PartOf=task_tracker.service
+
+[Socket]
+ListenStream=8000
+NoDelay=true
+Backlog=128
+
+[Install]
+WantedBy=sockets.target
