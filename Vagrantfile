@@ -20,6 +20,9 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", name: "create-db", path: "vm_scripts/3_create_db.sh"
   config.vm.provision "shell", name: "copy-config", path: "vm_scripts/4_copy_config.sh"
   config.vm.provision "shell", name: "start-service", path: "vm_scripts/5_systemmd_setup.sh"
+  config.vm.provision "shell", name: "setup-nginx", path: "vm_scripts/6_setup_nginx.sh"
+  config.vm.provision "shell", name: "create-gradebook", path: "vm_scripts/7_create_gradebook.sh"
+
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -30,7 +33,7 @@ Vagrant.configure("2") do |config|
   # within the machine from a port on the host machine. In the example below,
   # accessing "localhost:8080" will access port 80 on the guest machine.
   # NOTE: This will enable public access to the opened port
-  # config.vm.network "forwarded_port", guest: 80, host: 8080
+  config.vm.network "forwarded_port", guest: 80, host: 80
 
   # Create a forwarded port mapping which allows access to a specific port
   # within the machine from a port on the host machine and only allow access
@@ -57,7 +60,8 @@ Vagrant.configure("2") do |config|
   # by making sure your Vagrantfile isn't accessible to the vagrant box.
   # If you use this you may want to enable additional shared subfolders as
   # shown above.
-  config.vm.synced_folder "./", "/home/vagrant", type: "rsync", rsync__auto: true, rsync__exclude: ['./node_modules/**/*', './dist/**/*', './.git/**/*', './.env', './config.dev.yaml']
+  config.vm.synced_folder ".", "/vagrant", disabled: true
+  config.vm.synced_folder "./", "/home/vagrant", type: "rsync", rsync__auto: true, rsync__delete: true, rsync__exclude: ['node_modules/', 'dist/', '.git/', '.env', 'config.dev.yaml']
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.

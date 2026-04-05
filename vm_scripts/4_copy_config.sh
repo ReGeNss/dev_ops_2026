@@ -1,4 +1,6 @@
-cp -r /vagrant/* /home/app/
+rm -rf /home/app/node_modules /home/app/dist
+rsync -a --delete --exclude=node_modules --exclude=dist /home/vagrant/ /home/app/
+chown -R app:app /home/app/
 
 mkdir -p /etc/mywebapp
-cp /vagrant/config.yaml /etc/mywebapp/config.yaml
+cp /home/vagrant/config.yaml /etc/mywebapp/config.yaml
