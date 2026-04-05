@@ -151,7 +151,7 @@ sudo systemctl reload nginx.service
 2. Виконати наступні дії
 ```bash
 # Клонувати репозиторій
-git clone <url-репозиторію>
+git clone https://github.com/ReGeNss/dev_ops_2026.git
 cd lab1
 
 # Створити config.yaml з потрібними параметрами
